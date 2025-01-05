@@ -3,7 +3,7 @@
   "displayName": "Push Activity Logs",
   "description": "Tracks file changes and maintains GitHub contribution streak",
   "version": "0.0.1",
-  "publisher": "Macha Praveen",
+  "publisher": "MachaPraveen",
   "private": true,
   "license": "MIT",
   "icon": "resources/icon.png",
