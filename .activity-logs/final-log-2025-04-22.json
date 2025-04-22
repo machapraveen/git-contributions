@@ -1,0 +1,28 @@
+{
+  "date": "2025-04-22",
+  "summary": "- sample-change.txt: 32 changes\n- src\\smartCommit.ts: 9 changes\n- src\\activityTracker.ts: 9 changes\n- src\\extension.ts: 7 changes\n- src\\streakAgent.ts: 6 changes\n- src\\githubIntegration.ts: 6 changes\n- src\\utilityService.ts: 5 changes\n- icon.png: 4 changes\n- src\\dashboard.ts: 4 changes\n- src\\gitService.ts: 4 changes\n- Non-Technical-README.md: 4 changes\n- out\\gitService.js.map: 4 changes\n- package-lock.json: 3 changes\n- out\\activityTracker.js.map: 3 changes\n- out\\dashboard.js.map: 3 changes\n- out\\activityTracker.js: 3 changes\n- out\\extension.js.map: 3 changes\n- out\\types\\index.js.map: 3 changes\n- out\\extension.js: 3 changes\n- out\\types\\index.js: 3 changes\n- out\\dashboard.js: 3 changes\n- out\\gitService.js: 3 changes\n- out\\githubIntegration.js.map: 3 changes\n- out\\services\\ActivityTracker.js.map: 3 changes\n- out\\githubIntegration.js: 3 changes\n- out\\services\\ActivityTracker.js: 3 changes\n- out\\services\\GitService.js.map: 3 changes\n- out\\services\\GitService.js: 3 changes\n- out\\smartCommit.js.map: 3 changes\n- out\\smartCommit.js: 3 changes\n- out\\streakAgent.js.map: 3 changes\n- out\\streakAgent.js: 3 changes\n- out\\test\\extension.test.js.map: 3 changes\n- out\\test\\extension.test.js: 3 changes\n- out\\utilityService.js.map: 3 changes\n- out\\utilityService.js: 3 changes\n- out\\utils\\index.js.map: 3 changes\n- out\\utils\\index.js: 3 changes\n- package.json: 2 changes\n- README.md: 2 changes\n- src\\test\\extension.test.ts: 2 changes\n- CHANGELOG.md: 2 changes\n- out: 2 changes\n- out\\services: 2 changes\n- out\\test: 2 changes\n- out\\types: 2 changes\n- out\\utils: 2 changes\n- DEVELOPMENT.md: 2 changes\n- tsconfig.json: 1 changes",
+  "statistics": {
+    "totalFiles": 49,
+    "totalChanges": 193,
+    "mostEditedFile": "sample-change.txt",
+    "workDuration": "2545h 9m",
+    "fileTypes": {
+      "txt": 32,
+      "png": 4,
+      "ts": 52,
+      "json": 6,
+      "md": 10,
+      "unknown": 10,
+      "map": 40,
+      "js": 39
+    },
+    "peakActivityHour": "0:00-1:00",
+    "totalLinesChanged": 33485
+  },
+  "projectDetails": {
+    "branch": "main",
+    "commitHash": "abe476b",
+    "remote": "https://github.com/machapraveen/git-contributions.git",
+    "name": "c:\\Users\\prave\\projects\\Extensions\\Github-ext\\git-contributions"
+  }
+}
