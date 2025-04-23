@@ -1,8 +1,8 @@
 {
   "name": "git-contributions",
   "displayName": "Push Activity Logs",
-  "description": "Tracks file changes and maintains GitHub contribution streak",
-  "version": "0.0.1",
+  "description": "Tracks file changes and maintains GitHub contribution streak automatically",
+  "version": "0.1.1",
   "publisher": "MachaPraveen",
   "private": true,
   "license": "MIT",
@@ -19,7 +19,10 @@
     "activity",
     "tracking",
     "contributions",
-    "productivity"
+    "productivity",
+    "streak",
+    "github",
+    "analytics"
   ],
   "activationEvents": [
     "workspaceContains:.git"
@@ -31,6 +34,18 @@
         "command": "activity-tracker.pushLogs",
         "title": "Push Activity Logs",
         "icon": "$(git-commit)",
+        "category": "Activity Tracker"
+      },
+      {
+        "command": "activity-tracker.toggleStreakAgent",
+        "title": "Toggle Streak Agent",
+        "icon": "$(extensions-sync-enabled)",
+        "category": "Activity Tracker"
+      },
+      {
+        "command": "activity-tracker.openDashboard",
+        "title": "Open Activity Dashboard",
+        "icon": "$(graph)",
         "category": "Activity Tracker"
       }
     ],
@@ -47,9 +62,37 @@
           "default": [
             "node_modules",
             ".git",
-            "dist"
+            "dist",
+            ".activity-logs"
           ],
           "description": "Paths to ignore when tracking changes"
+        },
+        "activityTracker.streakAgent.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable the automatic streak maintenance agent to keep your GitHub contribution streak"
+        },
+        "activityTracker.streakAgent.intervalHours": {
+          "type": "number",
+          "default": 12,
+          "minimum": 1,
+          "maximum": 24,
+          "description": "Interval in hours between automatic streak maintenance runs"
+        },
+        "activityTracker.streakAgent.runOnStart": {
+          "type": "boolean",
+          "default": false,
+          "description": "Run the streak agent immediately when VS Code starts"
+        },
+        "activityTracker.github.personalAccessToken": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Personal Access Token for integration features (optional)"
+        },
+        "activityTracker.github.username": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub username for integration features (optional)"
         }
       }
     }
@@ -61,6 +104,7 @@
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "make-vsix": "vsce package",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",

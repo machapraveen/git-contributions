@@ -1,14 +1,18 @@
-# Push Activity Logs - GitHub Contribution Tracker
+# Push Activity Logs - Advanced GitHub Contribution Tracker
 
-Track your coding activity and maintain your GitHub contribution streak automatically! This extension monitors your file changes and helps you maintain a consistent contribution history.
+Track your coding activity and maintain your GitHub contribution streak automatically! This powerful extension monitors your file changes, provides detailed analytics, and can even maintain your contribution streak without any manual intervention.
 
 ## Features
 
-- 📊 **Tracks all file changes** in your workspace.
+- 📊 **Tracks all file changes** in your workspace with intelligent filtering.
 - ⏱️ **Automatically saves activity logs** periodically.
 - 🔄 **Maintains daily summaries** of your coding activity.
-- 📈 **Generates detailed statistics** about your work.
+- 📈 **Generates detailed statistics** about your work with a beautiful dashboard.
 - 🚀 **One-click push** to maintain your GitHub streak.
+- 🤖 **Automatic streak agent** that can maintain your GitHub contribution streak without manual intervention.
+- 💡 **Smart commit messages** that accurately describe your work.
+- 🔗 **GitHub API integration** to track your contribution streak in real-time.
+- 📱 **Activity dashboard** with charts and visualizations of your coding habits.
 
 ## Installation
 
@@ -49,9 +53,25 @@ After installation, you need to configure the extension according to your prefer
        "dist"
      ]
      ```
-     Add any other paths you don’t want to track.
+     Add any other paths you don't want to track.
 
-5. **Save the Settings**.
+5. **Configure the Streak Agent** (NEW!):
+   - Enable the automatic streak agent to maintain your GitHub contribution streak:
+     ```json
+     "activityTracker.streakAgent.enabled": true,
+     "activityTracker.streakAgent.intervalHours": 12
+     ```
+     This will automatically make a small contribution every 12 hours if needed.
+
+6. **GitHub Integration** (NEW!):
+   - Add your GitHub personal access token to enable the integration:
+     ```json
+     "activityTracker.github.personalAccessToken": "your-token-here",
+     "activityTracker.github.username": "your-username"
+     ```
+     This allows the extension to fetch your GitHub contribution data for the dashboard.
+
+7. **Save the Settings**.
 
 ### 3. Enable Git Tracking
 
@@ -63,7 +83,7 @@ The extension works with any Git repository. Just open a Git-based project in VS
 
 ### 1. Track Activity Automatically
 
-Once you open a Git repository in VS Code, the extension will begin tracking file changes. There’s no need for manual intervention.
+Once you open a Git repository in VS Code, the extension will begin tracking file changes. There's no need for manual intervention.
 
 ### 2. View Activity in the Status Bar
 
@@ -71,7 +91,7 @@ The extension will display your current activity status in the **VS Code status 
 
 ### 3. Push Activity Logs
 
-At the end of the week (or whenever you're ready), use the **"Push Activity Logs"** command to push your activity logs and update your GitHub contribution streak.
+At the end of the day (or whenever you're ready), use the **"Push Activity Logs"** command to push your activity logs and update your GitHub contribution streak.
 
 #### To push the logs:
 1. **Open the Command Palette**:
@@ -80,15 +100,52 @@ At the end of the week (or whenever you're ready), use the **"Push Activity Logs
    - Type **"Push Activity Logs"** and select the command.
 3. **Push the logs** to GitHub, updating your contribution streak.
 
-### 4. Review Your Activity Logs
+### 4. Use the Automatic Streak Agent (NEW!)
 
-The extension generates **daily summaries** of your tracked activity. You can review these logs to check your progress even before you push the activity to GitHub.
+The extension now includes an automatic streak agent that can maintain your GitHub streak without any manual intervention:
+
+1. **Enable the Streak Agent**:
+   - Open the Command Palette and search for **"Toggle Streak Agent"**.
+   - Select the command to enable the streak agent.
+
+2. **How it Works**:
+   - The streak agent will check if you've made a contribution today.
+   - If not, it will make a small change to a designated file, create a log, and push it to maintain your streak.
+   - This happens automatically at the configured interval (default: 12 hours).
+
+3. **Configure the Agent**:
+   - You can adjust the interval in the settings (see Configuration section).
+   - The agent will create a `.streakagent` file in your repository to track its activity, or use an existing file like README.md.
+
+### 5. View Your Activity Dashboard (NEW!)
+
+1. **Open the Dashboard**:
+   - Open the Command Palette and search for **"Open Activity Dashboard"**.
+   - Select the command to open the interactive dashboard.
+
+2. **Dashboard Features**:
+   - Activity by file type (pie chart)
+   - Activity by hour of day (bar chart)
+   - Activity heatmap (similar to GitHub's contribution graph)
+   - Most modified files
+   - Overall statistics and summaries
+   - GitHub integration (if configured)
+
+### 6. Smart Commit Messages (NEW!)
+
+The extension now generates intelligent commit messages based on your activity:
+
+- Messages describe what files were changed and how
+- Automatically identifies patterns in your work
+- Provides context about your changes (e.g., "Update TypeScript configuration files")
+
+You can disable this feature in settings if you prefer the traditional emoji-based messages.
 
 ---
 
 ## Example Settings Configuration
 
-Here’s an example of how your `settings.json` file should look after configuring the extension:
+Here's an example of how your `settings.json` file should look with all advanced features enabled:
 
 ```json
 {
@@ -96,29 +153,98 @@ Here’s an example of how your `settings.json` file should look after configuri
   "activityTracker.ignoredPaths": [
     "node_modules",
     ".git",
-    "dist"
-  ]
+    "dist",
+    ".activity-logs"
+  ],
+  "activityTracker.streakAgent.enabled": true,
+  "activityTracker.streakAgent.intervalHours": 12,
+  "activityTracker.streakAgent.runOnStart": false,
+  "activityTracker.github.personalAccessToken": "your-token-here",
+  "activityTracker.github.username": "your-username",
+  "activityTracker.smartCommit.enabled": true
 }
 ```
 
 ---
 
-## Screenshots
+## Advanced Features Guide
 
-- **Status Bar Showing Activity**:
-  ![Status Bar](images/status-bar.png)
+### GitHub API Integration
 
-- **Configuration in Settings**:
-  ![Settings](images/settings.png)
+To fully enable GitHub integration features:
 
-- **Push Activity Logs Command**:
-  ![Push Logs](images/push-logs.png)
+1. **Create a GitHub Personal Access Token**:
+   - Go to [GitHub Settings > Developer Settings > Personal Access Tokens](https://github.com/settings/tokens)
+   - Click "Generate new token"
+   - Give it a name like "VS Code Activity Tracker"
+   - Select the "repo" scope
+   - Click "Generate token"
+   - Copy the token and add it to your VS Code settings:
+     ```json
+     "activityTracker.github.personalAccessToken": "your-token-here"
+     ```
 
-- **Final Log Output**:
-  ![Final-Log](images/final-log.png)
+2. **Benefits of GitHub Integration**:
+   - See your GitHub contributions alongside your local activity
+   - Verify your contribution streak is being maintained
+   - Get insights into your GitHub activity patterns
 
-- **Successful Pushed Log**:
-  ![Successful Pushed Log](images/successful-pushed-log.png)
+### Streak Agent Configuration
+
+The streak agent has several configuration options:
+
+1. **Enable/Disable**: Turn the streak agent on or off.
+   ```json
+   "activityTracker.streakAgent.enabled": true
+   ```
+
+2. **Interval**: Set how often (in hours) the agent should check and maintain your streak.
+   ```json
+   "activityTracker.streakAgent.intervalHours": 12
+   ```
+
+3. **Run on Start**: Have the agent run immediately when VS Code starts.
+   ```json
+   "activityTracker.streakAgent.runOnStart": false
+   ```
+
+4. **Custom File**: The agent will look for these files in order:
+   - `.streakagent` (creates if doesn't exist)
+   - `README.md`
+   - `CHANGELOG.md`
+   - `.streakagent.md` (creates if doesn't exist)
+
+### Activity Dashboard Features
+
+The dashboard provides rich insights into your coding habits:
+
+1. **Activity Overview**:
+   - Total changes
+   - Total files modified
+   - Active days
+
+2. **Top Files Analysis**:
+   - Most frequently modified files
+   - Lines changed per file
+
+3. **Language/File Type Breakdown**:
+   - Visual breakdown of which file types you work with most
+   - Percentage of time spent on each language
+
+4. **Time Analysis**:
+   - Activity by hour of day
+   - Peak productivity times
+   - Work duration tracking
+
+5. **Activity Heatmap**:
+   - Visual representation of your activity over time
+   - Similar to GitHub's contribution graph
+   - Last 90 days of activity
+
+6. **GitHub Integration**:
+   - Shows your GitHub contribution data alongside local activity
+   - Tracks contribution streak
+   - Shows contribution counts and patterns
 
 ---
 
@@ -145,12 +271,7 @@ Failed to push logs: ENOENT: no such file or directory, open 'C:\path\to\your\pr
    - The extension should now start saving logs inside the `.activity-logs` folder.
 
 4. **Check the Output Panel**:
-   - If the issue persists, open **VS Code’s Output Panel** and check the **Extension logs** for any additional details or error messages related to the extension.
-
-#### **Error Screenshot Example**:
-Here's how the error might appear when the `.activity-logs` folder is missing:
-
-![Error Screenshot](images/missing-folder-error.png)
+   - If the issue persists, open **VS Code's Output Panel** and check the **Extension logs** for any additional details or error messages related to the extension.
 
 ---
 
@@ -181,4 +302,3 @@ For any questions or suggestions, please open an issue on the GitHub repository 
 Thank you for using **Push Activity Logs**! 🎉
 
 ---
-
